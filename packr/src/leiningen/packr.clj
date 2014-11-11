@@ -54,7 +54,7 @@ corresponding to the given args will be downloaded and bundled."
       (doseq [tgt targets] ((get target-actions tgt "windows"))))
     (doseq [tgt targets] 
       (let [cfg (Packr$Config.)]
-         (.pack (Packr.) (set-all! cfg
+        (set-all! cfg
                                    {platform (get-platform tgt)
                                     jdk (str (System/getProperty "user.home") "/.lein-packr-cache/" tgt ".zip")
                                     executable (:name project)
@@ -70,4 +70,5 @@ corresponding to the given args will be downloaded and bundled."
                                                              "jre/lib/rt/sun/applet"
                                                              "jre/lib/rt/sun/corba"
                                                              "jre/lib/rt/sun/management"]))
-                                    outDir (str "out-" tgt)}))))))
+                                    outDir (str "out-" tgt)})
+         (.pack (Packr.) cfg)))))
