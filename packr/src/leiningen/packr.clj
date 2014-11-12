@@ -33,16 +33,16 @@ corresponding to the given args will be downloaded and bundled."
   [project & args]
   (let [all-targets ["windows" "linux32" "linux64" "mac"]
         target-actions {
-                        "windows" #(when (not (.exists (io/file "~/.lein-packr-cache/windows.zip")))
+                        "windows" #(when (not (.exists (io/file (System/getProperty "user.home") ".lein-packr-cache/windows.zip")))
                                      (write-file "https://bitbucket.org/alexkasko/openjdk-unofficial-builds/downloads/openjdk-1.7.0-u60-unofficial-windows-i586-image.zip"
                                                  (str (System/getProperty "user.home") "/.lein-packr-cache/windows.zip")))
-                        "linux32" #(when (not (.exists (io/file "~/.lein-packr-cache/linux32.zip")))
+                        "linux32" #(when (not (.exists (io/file (System/getProperty "user.home") ".lein-packr-cache/linux32.zip")))
                                      (write-file "https://bitbucket.org/alexkasko/openjdk-unofficial-builds/downloads/openjdk-1.7.0-u60-unofficial-linux-i586-image.zip"
                                                  (str (System/getProperty "user.home") "/.lein-packr-cache/linux32.zip")))
-                        "linux64" #(when (not (.exists (io/file "~/.lein-packr-cache/linux64.zip")))
+                        "linux64" #(when (not (.exists (io/file (System/getProperty "user.home") ".lein-packr-cache/linux64.zip")))
                                      (write-file "https://bitbucket.org/alexkasko/openjdk-unofficial-builds/downloads/openjdk-1.7.0-u60-unofficial-linux-amd64-image.zip"
                                                  (str (System/getProperty "user.home") "/.lein-packr-cache/linux64.zip")))
-                        "mac"     #(when (not (.exists (io/file "~/.lein-packr-cache/mac.zip")))
+                        "mac"     #(when (not (.exists (io/file (System/getProperty "user.home") ".lein-packr-cache/mac.zip")))
                                      (write-file "https://bitbucket.org/alexkasko/openjdk-unofficial-builds/downloads/openjdk-1.7.0-u60-unofficial-macosx-x86_64-image.zip"
                                                  (str (System/getProperty "user.home") "/.lein-packr-cache/mac.zip")))}
         targets (if (seq args)
