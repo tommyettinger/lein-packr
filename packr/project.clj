@@ -3,5 +3,5 @@
   :url "https://github.com/tommyettinger/lein-packr"
   :license {:name "Eclipse Public License"
             :url "http://www.eclipse.org/legal/epl-v10.html"}
-  :dependencies [[com.badlogicgames.packr/packr "1.2"]]
+  :dependencies [[com.badlogicgames.packr/packr "1.1"]]
   :eval-in-leiningen true)
